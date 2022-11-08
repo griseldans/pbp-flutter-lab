@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'counter_7',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // CHECKLIST 2
+      home: const MyHomePage(title: 'Program Counter'),
     );
   }
 }
@@ -58,6 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+  }
+
+  // CHECKLIST 3
+  void _decrementCounter() {
+    setState(() {
+      _counter > 0 ? _counter-- : 0;
     });
   }
 
@@ -95,9 +103,15 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            _counter % 2 == 1
+                ? const Text(
+                    'GANJIL',
+                    style: TextStyle(color: Colors.blue),
+                  )
+                : const Text(
+                    'GENAP',
+                    style: TextStyle(color: Colors.red),
+                  ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
@@ -105,11 +119,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: Row(
+        children: [
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ), // This trailing comma makes auto-formatting nicer for build methods.
+          FloatingActionButton(
+            onPressed: _decrementCounter,
+            tooltip: 'Decrement',
+            child: const Icon(Icons.remove),
+          ),
+        ],
+      ),
     );
   }
 }
