@@ -1,3 +1,5 @@
+# Tugas 7
+
 ### Stateless and Stateful widget
 ##### Stateless widget
 1. Widget yang tidak bisa diubah oleh pengguna
@@ -38,3 +40,20 @@ Pada program, yang bisa termodifikasi saat setState() dipanggil adalah Text yang
 2. Membuat `Padding()` dan menjadikan `Row()` sebagai child utama
 3. Memodifikasi bagian FloatingActionButton increment yang berada pada child dengan memanggil `Row()` dan memasukkan FloatingActionButton increment dan decrement sebagai children dari `Row()`
 4. FloatingActionButton decrement menggunakan `Visibilty()` sebagai parentnya supaya bisa di-hide dan di-show sesuai nilai counter (BONUS)
+
+
+# Tugas 8
+
+### Perbedaan Navigator.push dan Navigator.pushReplacement.
+
+
+### Widget yang digunakan
+
+
+### Jenis-jenis event pada Flutter
+
+
+### Cara kerja Navigator dalam mengganti halaman
+
+
+### Implementasi
