@@ -35,6 +35,7 @@ class _MyWatchListState extends State<MyWatchList> {
     List<WatchList> listWatch = [];
     for (var d in data) {
       if (d != null) {
+        print("d is null");
         listWatch.add(WatchList.fromJson(d));
       }
     }
@@ -51,50 +52,52 @@ class _MyWatchListState extends State<MyWatchList> {
         drawer: buildDrawer(context),
         body: FutureBuilder(
             future: fetchWatchList(),
-            builder: ((context, snapshot) {
+            builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 if (!snapshot.hasData) {
                   return const Text('Belum ada yang kamu tonton');
                 } else {
-                  ListView.builder(itemBuilder: ((_, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: 
-                      OutlinedButton(
-                          onPressed: () {
-                            // TODO: kirim data ke page detail watchlist & navigator.push()
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => WatchListPage(
-                                        watchlist: snapshot.data![index])));
-                          }, // TODO: ngarahin ke halaman detail
-                          child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  Checkbox(
-                                      value:
-                                          false, // TODO: sesuain dgnt true false data
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          value =
-                                              value!; // TODO: gue ga ngerti sih ini apa suyuyurnya
-                                        });
-                                      }),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(snapshot.data![index].title),
-                                  )
-                                ],
-                              ))),
-                    );
-                  }));
+                  return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: ((_, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: OutlinedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => WatchListPage(
+                                            watchlist: snapshot.data![index])));
+                              },
+                              child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Checkbox(
+                                          value: snapshot.data![index]
+                                              .watched, // TODO: sesuain dgnt true false data
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              snapshot.data![index].watched =
+                                                  !snapshot
+                                                      .data![index].watched;
+                                            });
+                                          }),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child:
+                                            Text(snapshot.data![index].title),
+                                      )
+                                    ],
+                                  ))),
+                        );
+                      }));
                 }
               }
-              return Text('Belum ada yang ditonton');
-            })));
+              return Text('Belum ada yang ditontonnn');
+            }));
   }
 }
