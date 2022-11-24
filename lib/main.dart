@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:counter_7/drawer.dart';
-import 'package:counter_7/tambah_data.dart';
-import 'package:counter_7/show_data.dart';
+import 'package:counter_7/page/drawer.dart';
+import 'package:counter_7/page/tambah_data.dart';
+import 'package:counter_7/page/show_data.dart';
 
 void main() {
   runApp(const MyApp());

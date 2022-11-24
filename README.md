@@ -75,3 +75,36 @@ Selain itu, terdapat pushReplacement yang mengganti layer page lama dengan layer
 3. Membuat budget.dart berisi class Budget untuk menyimpan data dari input user
 4. Membuat file tambah_data.dart sebagai form untuk menambahkan dart. Menggunakan class Budget untuk menyimpan data yang diterima.
 5. Membuat file show_data.dart untuk menampilkan card berisi informasi budget. Menggunakan list dari class Budget untuk menampilkan data.
+
+
+# Tugas 9
+
+### Pengembilangan data JSON tanpa sebuah model
+Bisa, tapi metode ini memiliki resiko data yang diterima bukan lah data yang diinginkan. JSON memiliki beberapa layer sehingga pembuatan sebuah model sangat disarankan supaya data pada Flutter memiliki struktur dan mempermudah proses pengambilan data.
+
+
+### Widget yang digunakan saat ini
+1. Drawer: panel untuk navigator page
+2. ListTile: container yang membantu pengguna ke page yang lain
+3. TextFormField: widget untuk menerima input user
+4. Column, Padding, Row: widget untuk mengatur posisi
+5. Outlined button: Membuat button yang mengarahkan ke page detail film
+6. Text: Menampilkan teks dari data JSON
+7. TextButton: widget tombol untuk mengambil input user
+8. SizedBox: membuat sixed box dengan ukuran yang fixed
+9. SingleScrollChildView: menambahkan widget scroll pada widget column yang isinya tidak cukup di ukuran 1 layar
+10. ElevatedButton: Membuat button untuk back to page
+
+### Mekanisme pengembilan data dari JSON
+* Menambahkan dependensi `http`
+* Membuat function fetch data untuk mengambil data dari URL
+* Membuat model yang disesuaikan dengan struktur pada database JSON
+* Melakukan fetch data dan mengkonversi data JSON
+* Menampilkan data secara asnychronous dengan `FutureBuilder`
+
+### Implementasi Checklist
+* Membuat halaman mywatchlist dan menambahkannya pada drawer
+* Menambahkan dependesi HTTP pada android XML
+* Membuat model yang disesuaikan dengan struktur data JSON pada tugas 3
+* Membuat halaman utama watchlist menggunakan outlined button yang nantinya akan mengarahkan ke page detail sesuai index datanya
+* Membuat page detail watchlist yang menerima data dari page utama mywatchlist
